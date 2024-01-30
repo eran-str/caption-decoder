@@ -1,6 +1,6 @@
 import pickle, json
 
-kagle_json = 'annotations/dataset_coco_from_kaggle.json'
+kagle_json = 'anno_zips/dataset_coco.json'
 new_json_train = 'post_processed_karpthy_coco/train.json'
 new_json_test = 'post_processed_karpthy_coco/test.json'
 new_json_val = 'post_processed_karpthy_coco/val.json'

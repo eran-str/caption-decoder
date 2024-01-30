@@ -7,11 +7,12 @@ import json
 import os
 from tqdm import tqdm
 import argparse, math
+from fashion_clip.fashion_clip import FashionCLIP
 
 # dave conf
 # ~~~~~~~~~
 add_text_embedding = True
-device = torch.device('cuda:0')
+device = torch.device('cuda:2')
 
 # constants
 # first line man, second woman, each column has the same form of gender. e.g. wife-husband, girl-boy etc.
@@ -116,11 +117,11 @@ def run_main():
     args = parser.parse_args()
     clip_model_name = args.clip_model_type.replace('/', '_')
     if args.dataset_mode == 0:
-        out_path = f"./data/coco/verified_split_COCO_train_set.pkl"
+        out_path = f"data/coco/verified_split_COCO_train_set.pkl"
         if add_text_embedding:
             out_path = f"./data/coco/verified_split_COCO_train_set_with_text_not_norm.pkl"
             print(f'Text embeddings will be added to the dataset')
-        annotations_path = f'/home/gamir/DER-Roei/davidn/myprivate_coco/annotations/train.json'
+        annotations_path = f'/home/ohad/Projects/CapDec/post_processed_karpthy_coco/train.json'
         images_path = '/home/gamir/DER-Roei/davidn/myprivate_coco/train2014/'
     elif args.dataset_mode == 0.5:
         out_path = f"./data/coco/COCO_val_set_single_cap_per_sample.pkl"

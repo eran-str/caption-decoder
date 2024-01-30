@@ -12,7 +12,8 @@ import argparse
 import json, math
 from typing import Tuple, Optional, Union
 
-device = torch.device('cuda:0')
+DEVICE = 'cuda:2'
+device = torch.device(DEVICE)
 
 
 def get_uniform_ball_noise(input_shape, radius=0.1):
@@ -316,7 +317,7 @@ def load_model(config_path: str, epoch_or_latest: Union[str, int] = '_latest'):
 
 def train(dataset: ClipCocoDataset, model: ClipCaptionModel, args, warmup_steps: int = 5000, output_dir: str = ".", output_prefix: str = ""):
 
-    device = torch.device('cuda:0')
+    device = torch.device(DEVICE)
     batch_size = args.bs
     epochs = args.epochs
     if not os.path.exists(output_dir):
